@@ -149,6 +149,15 @@ const Register = () => {
                     <div>
                         <input
                             type="password"
+                            name="password"
+                            id="password"
+                            placeholder="Password"
+                            className="w-[450px] px-3 py-2 border border-white focus:outline-none focus:border-b-2 font-semibold text-black"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="password"
                             name="cpassword"
                             id="cpassword"
                             placeholder="Confirm Password"
@@ -157,15 +166,6 @@ const Register = () => {
                         {
                             matchPassword && <p className="font-bold text-red-600">Password not matched.</p>
                         }
-                    </div>
-                    <div>
-                        <input
-                            type="password"
-                            name="password"
-                            id="password"
-                            placeholder="Password"
-                            className="w-[450px] px-3 py-2 border border-white focus:outline-none focus:border-b-2 font-semibold text-black"
-                        />
                     </div>
                     <div className="flex justify-center">
                         <button

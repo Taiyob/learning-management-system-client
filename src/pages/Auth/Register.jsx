@@ -26,17 +26,30 @@ const Register = () => {
         try {
             if (password !== confirm_password) {
                 setMatchPassword(true);
-                toast.error('Something went wrong, try again', { id: toastId });
+                toast.error('Passwords do not match', { id: toastId });
                 return;
-            } else if (password === confirm_password) {
-                const register = await createUser(email, password);
-                console.log(register);
-                if (register?.user?.email) {
-                    const userData = { name, phone, image, email };
-                    await axios.post('http://localhost:3000/user-register', userData);
-                    toast.success('Create successfully', { id: toastId });
-                    logout();
-                    navigate('/login');
+            }
+
+            const register = await createUser(email, password);
+            //console.log('Firebase user creation response:', register);
+
+            if (register && register.user && register.user.email) {
+                //console.log('Firebase user email:', register.user.email);
+
+                const userData = { name, phone, image, email };
+
+                try {
+                    const response = await axios.post('http://localhost:3000/user-register', userData);
+                    //console.log('MongoDB user registration response:', response.data);
+                    if(response?.data?.status == "success"){
+                        toast.success('User created successfully', { id: toastId });
+
+                        logout();
+                        navigate('/login');
+                    }
+                } catch (error) {
+                    //console.error('Error saving user to MongoDB:', error);
+                    toast.error('Failed to save user data', { id: toastId });
                 }
             }
         } catch (e) {

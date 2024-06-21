@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from '../../assets/images/logo.png'
 import toast from "react-hot-toast";
 import useAuthContext from "../../hooks/useAuthContext";
+import axios from "axios";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -21,6 +22,13 @@ const Login = () => {
             const processLogin = await login(email, password);
             console.log(processLogin);
             if (processLogin?.user?.email) {
+                const userData = {email, password}
+                const response = await axios.post('http://localhost:3000/user-register', userData);
+
+                if(response?.data?.status == "success"){
+                    localStorage.setItem("token", response?.data?.token);
+                }
+
                 toast.success('Successfully login', { id: toastId });
                 //navigate(from, { replace: true });
                 navigate(location?.state ? location?.state : "/");

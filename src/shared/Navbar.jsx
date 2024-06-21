@@ -1,7 +1,16 @@
 import { TfiUnlock } from 'react-icons/tfi';
 import logo from '../assets/images/logo.png'
+import useAuthContext from '../hooks/useAuthContext';
+import { Link } from 'react-router-dom';
+import { AiOutlineLogout } from 'react-icons/ai';
 
 const Navbar = () => {
+    const { user, logout } = useAuthContext();
+
+    const handleLogout = async () => {
+        await logout();
+    }
+
     return (
         <div>
             <div className="navbar bg-[#1d2126] py-5">
@@ -46,8 +55,18 @@ const Navbar = () => {
                     </ul> */}
                 </div>
                 <div className="navbar-end">
-                    <TfiUnlock className='mr-5 text-4xl text-gray-400' />
-                    <a className="btn btn-lg bg-[#ed0b4c] text-white text-3xl rounded-lg border border-[#ed0b4c]">Get started</a>
+                    {
+                        user?.email ?
+                            <div className='flex items-center'>
+                                <Link onClick={handleLogout}><AiOutlineLogout className='mr-5 text-4xl text-gray-400' /></Link>
+                                <Link to='/dashboard' className={`btn btn-lg bg-gradient-to-r from-blue-500 to-blue-700 text-white text-3xl rounded-lg border border-[#4299e1]`}>Dashboard</Link>
+                            </div>
+                            :
+                            <div className='flex items-center'>
+                                <Link to='/login'><TfiUnlock className='mr-5 text-4xl text-gray-400' /></Link>
+                                <Link to='/register' className="btn btn-lg bg-[#ed0b4c] text-white text-3xl rounded-lg border border-[#ed0b4c]">Get started</Link>
+                            </div>
+                    }
                 </div>
             </div>
             <div className='bg-[#1d2126]'>

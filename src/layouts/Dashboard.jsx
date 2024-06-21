@@ -16,16 +16,16 @@ const Dashboard = () => {
                                 <a className="text-4xl font-extrabold text-white">Tutorio</a>
                             </Link>
                             <Link
-                                to="/dashboard/booking"
+                                to="/dashboard/course"
                                 className="flex items-center gap-2 text-xl text-transparent bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text"
                             >
                                 <BsCart2 className="text-[#4299e1]" />
-                                Book
+                                Course
                             </Link>
                         </li>
                         <li>
                             <Link
-                                to="/dashboard/booking-list"
+                                to="/dashboard/create-course"
                                 className="flex items-center gap-2 text-xl text-transparent bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text"
                             >
                                 <svg
@@ -49,7 +49,7 @@ const Dashboard = () => {
                                         fill="#4299e1"
                                     />
                                 </svg>
-                                Booking List
+                                Create Course
                             </Link>
                         </li>
                         <li>

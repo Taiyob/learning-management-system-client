@@ -5,6 +5,9 @@ import Register from "../pages/Auth/Register";
 import Dashboard from "../layouts/Dashboard";
 import DashboardHome from "../pages/Dashboard/DashboardHome";
 import PrivateRouter from "./PrivateRouter";
+//import { element } from "prop-types";
+import CreateCourse from "../pages/Dashboard/CreateCourse";
+import Course from "../pages/Dashboard/Course";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +29,14 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <DashboardHome />,
+            },
+            {
+                path: 'create-course',
+                element: <CreateCourse />,
+            },
+            {
+                path: 'course',
+                element: <Course />,
             },
         ],
     },

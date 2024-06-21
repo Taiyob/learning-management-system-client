@@ -17,7 +17,7 @@ const CreateCourse = () => {
 
         const newCourse = { title, description };
 
-        const response = await axios.post('http://localhost:3000/create-course', newCourse);
+        const response = await axios.post('https://learning-management-server-ten.vercel.app/create-course', newCourse);
         console.log(response);
         if (response?.data?.result?.acknowledged == true) {
             Swal.fire({

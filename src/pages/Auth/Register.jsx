@@ -39,7 +39,7 @@ const Register = () => {
                 const userData = { name, phone, image, email };
 
                 try {
-                    const response = await axios.post('http://localhost:3000/user-register', userData);
+                    const response = await axios.post('https://learning-management-server-ten.vercel.app/user-register', userData);
                     //console.log('MongoDB user registration response:', response.data);
                     if(response?.data?.status == "success"){
                         toast.success('User created successfully', { id: toastId });

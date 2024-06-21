@@ -23,7 +23,7 @@ const Login = () => {
             console.log(processLogin);
             if (processLogin?.user?.email) {
                 const userData = {email, password}
-                const response = await axios.post('http://localhost:3000/user-register', userData);
+                const response = await axios.post('https://learning-management-server-ten.vercel.app/user-register', userData);
 
                 if(response?.data?.status == "success"){
                     localStorage.setItem("token", response?.data?.token);
